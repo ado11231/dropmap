@@ -1,2 +1,2 @@
 # dropmap
-Daemon Script that reroutes browser downloads into corrosponding folders
+Daemon script that reroutes browser downloads into corrosponding folders
