@@ -4,9 +4,12 @@ from pathlib import Path
 from config import ROUTING_TABLE
 
 def is_stable(path):
-    file_size = path.stat().st_size
-    time.sleep(2)
-    return path.stat().st_size == file_size
+    try:
+        file_size = path.stat().st_size
+        time.sleep(2)
+        return path.stat().st_size == file_size
+    except FileNotFoundError:
+        return False
 
 def resolve_dest(dest_folder, name):
     candidate = dest_folder / name

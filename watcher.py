@@ -9,8 +9,10 @@ class Handler(FileSystemEventHandler):
         self.file_router = file_router
 
     def on_created(self, event):
+        print(f"Detected: {event.src_path}")
         if event.is_directory:
             return
+
         path = Path(event.src_path)
 
         if path.suffix in (".crdownload", ".part"):
@@ -18,7 +20,7 @@ class Handler(FileSystemEventHandler):
         self.file_router.route_file(path)
 
 def folder_observer():
-    handler = Handler(file_router=router)
+    handler = Handler(file_router = router)
     observer = Observer()
     observer.schedule(handler, str(WATCHING_FOLDER), recursive = False)
     observer.start()
