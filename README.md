@@ -20,6 +20,12 @@ If a file with the same name already exists in the destination, dropmap renames 
 ## Setup
 
 **1. Clone the repo and create a virtual environment:**
+
+> Requires Python 3.9–3.13. Python 3.14+ can break `venv` on macOS. If `python3 -m venv` fails, install a stable version with pyenv:
+> ```bash
+> brew install pyenv && pyenv install 3.12.7 && pyenv local 3.12.7
+> ```
+
 ```bash
 git clone https://github.com/ado11231/dropmap.git
 cd dropmap

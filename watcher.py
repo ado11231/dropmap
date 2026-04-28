@@ -9,7 +9,6 @@ class Handler(FileSystemEventHandler):
         self.file_router = file_router
 
     def on_created(self, event):
-        print(f"Detected: {event.src_path}")
         if event.is_directory:
             return
 

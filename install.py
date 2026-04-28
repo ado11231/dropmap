@@ -1,3 +1,4 @@
+import os
 import subprocess
 from pathlib import Path
 
@@ -42,17 +43,17 @@ def install():
         print("Virtual environment not found. Run: python3 -m venv .venv && .venv/bin/pip install watchdog")
         return
 
-    LAUNCH_AGENTS.mkdir(parents=True, exist_ok=True)
+    LAUNCH_AGENTS.mkdir(parents = True, exist_ok = True)
     PLIST_DEST.write_text(PLIST)
     print(f"Wrote plist to {PLIST_DEST}")
 
-    subprocess.run(["launchctl", "unload", str(PLIST_DEST)], capture_output=True)
-    subprocess.run(["launchctl", "load", str(PLIST_DEST)], check=True)
+    subprocess.run(["launchctl", "unload", str(PLIST_DEST)], capture_output = True)
+    subprocess.run(["launchctl", "load", str(PLIST_DEST)], check = True)
     print("Dropmap is running and will start automatically on login.")
 
 def uninstall():
     if PLIST_DEST.exists():
-        subprocess.run(["launchctl", "unload", str(PLIST_DEST)], capture_output=True)
+        subprocess.run(["launchctl", "unload", str(PLIST_DEST)], capture_output = True)
         PLIST_DEST.unlink()
         print("Dropmap removed from startup.")
     else:
